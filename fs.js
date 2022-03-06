@@ -6,6 +6,8 @@ const fs = require("fs");
 
 
 //appendilesync appends data into file, if file is not present  , it creates the file and then appends the data.
+
+                              //file path //message to be appended  
 // let res = fs.appendFileSync("f1.txt","Hello i am f2 file");
 // fs.appendFileSync("f1.txt","\nYou guys are smart");
 
