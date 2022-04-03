@@ -71,7 +71,19 @@ function getMatchDetails(html)
               //will be getting valid data
             //   count++;
             //   console.log("inside "+count);
-              //name | runs | balls | 4's | 6's | sr
+            //name | runs | balls | 4's | 6's | sr
+            let playerName = selecTool(row.find("td")[0]).text();
+            let runs = selecTool(row.find("td")[2]).text();
+            let balls = selecTool(row.find("td")[3]).text();
+            let numberOf4= selecTool(row.find("td")[5]).text();
+            let numberOf6 = selecTool(row.find("td")[6]).text();
+            let sr = selecTool(row.find("td")[7]).text();
+
+           console.log(
+               `playerName -> ${playerName} runScored -> ${runs} balsPlayed -> ${balls}
+                numberOfFours-> ${numberOf4} numberOfSixes -> ${numberOf6} strikeRate -> ${sr}`
+           );
+
           }  
         } 
     }
