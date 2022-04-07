@@ -63,6 +63,31 @@ browserOpenPromise //fulfill
     );
     return algorithmTabWillBeOPenedPromise;
   })
+  .then(function () {
+    console.log("algorithm page is opened");
+    let allQuesPromise = curTab.waitForSelector(
+      'a[data-analytics="ChallengeListChallengeName"]'
+    );
+    return allQuesPromise;
+  })
+  .then(function () {
+    function getAllQuesLinks() {
+      let allElemArr = document.querySelectorAll(
+        'a[data-analytics="ChallengeListChallengeName"]'
+      );
+      let linksArr = [];
+      for (let i = 0; i < allElemArr.length; i++) {
+        linksArr.push(allElemArr[i].getAttribute("href"));
+      }
+      return linksArr;
+    }
+    let linksArrPromise = curTab.evaluate(getAllQuesLinks);
+    return linksArrPromise;
+  })
+  .then(function (linksArr) {
+    console.log("links to all ques received");
+    console.log(linksArr);
+  })
   .catch(function (error){
    console.log(error);
   });
@@ -79,7 +104,7 @@ browserOpenPromise //fulfill
         })
         .then(function () {
           console.log("algo btn is clicked");
-          resolve();
+          resolve();// when you are writing your own promise you need to resolve it so that the promise is full filled . So is the duty of the promise maker to resolve it.
         })
         .catch(function (err) {
           reject(err);
