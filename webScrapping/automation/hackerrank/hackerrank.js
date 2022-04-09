@@ -1,7 +1,7 @@
 const puppeteer = require("puppeteer");
 // let { email, password } = require('./secrets');
-let email = "harshvardhanarra561@gmail.com";
-let password = "Harshvardhan8374";
+let email = "can't show secutry issues ";
+let password = "can't show secutry issues";
 // let { answer } = require("./codes");
 let curTab;
 let browserOpenPromise = puppeteer.launch({
@@ -71,7 +71,7 @@ browserOpenPromise //fulfill
     return allQuesPromise;
   })
   .then(function () {
-    function getAllQuesLinks() {
+    function getAllQuesLinks() { // we are applying getAllQuesLinks functions on the current page using evaluate method
       let allElemArr = document.querySelectorAll(
         'a[data-analytics="ChallengeListChallengeName"]'
       );
@@ -93,7 +93,8 @@ browserOpenPromise //fulfill
   });
 
 
-  function waitAndClick(algoBtn) {
+  function waitAndClick(algoBtn) // combining to promises here
+  {
     let waitClickPromise = new Promise(function (resolve, reject) {
       let waitForSelectorPromise = curTab.waitForSelector(algoBtn);
       waitForSelectorPromise
